@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<conio.h>
+//1.25
+struct Ve
+{
+	char TenPhim[20];
+	long GiaTien;
+	NGAY NgayChieu;
+};
+typedef struct Ve VE;
+
+void XuatNgay(NGAY ng)
+{
+	printf("%d/%d/%d", ng.Day, ng.Month, ng.Year);
+}
+void NhapVe(VE &ve)
+{
+	
+
+	fflush(stdin);
+	printf("\nNhap vao ten phim: ");
+	gets(ve.TenPhim);
+
+	do 
+	{
+		printf("\nNhap vao gia ve: ");
+		scanf("%ld", &ve.GiaTien);
+
+		if (ve.GiaTien < 0)
+		{
+			printf("\nGia ve khong hop le. Xin kiem tra lai !");
+		}
+
+	} while (ve.GiaTien < 0);
+
+
+	printf("\nNhap ngay chieu: ");
+	NhapNgay(ve.NgayChieu);
+}
+
+void XuatVe(VE ve)
+{
+	
+	printf("\nTen phim: %s", ve.TenPhim);
+	printf("\nGia ban: %ld", ve.GiaTien);
+	printf("\nNgay chieu: ");
+	XuatNgay(ve.NgayChieu);
+	
+}
+int main()
+{
+	VE v;
+	NhapVe(v);
+	XuatVe(v);
+	
+	getch();
+	return 0;
+}
